@@ -9,5 +9,5 @@ public class Spring2Application {
     public static void main(String[] args) {
         SpringApplication.run(Spring2Application.class, args);
     }
-
+    // 푸쉬 연습
 }
