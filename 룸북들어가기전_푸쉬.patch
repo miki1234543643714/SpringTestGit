@@ -1,0 +1,92 @@
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/build.gradle b/build.gradle
+--- a/build.gradle	(revision 6e2bbf255197fb56c32eb936e8a7f3bcddfe2131)
++++ b/build.gradle	(revision 3c13457975b4d3b011cc88f4a09b40110a42fde1)
+@@ -15,6 +15,7 @@
+ dependencies {
+     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+     implementation 'org.springframework.boot:spring-boot-starter-web'
++    implementation 'org.projectlombok:lombok'
+     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+ }
+ 
+Index: src/main/java/com/example/spring2/Spring2Application.java
+===================================================================
+diff --git a/src/main/java/com/example/spring2/Spring2Application.java b/src/main/java/com/example/spring2/Application.java
+rename from src/main/java/com/example/spring2/Spring2Application.java
+rename to src/main/java/com/example/spring2/Application.java
+--- a/src/main/java/com/example/spring2/Spring2Application.java	(revision 6e2bbf255197fb56c32eb936e8a7f3bcddfe2131)
++++ b/src/main/java/com/example/spring2/Application.java	(revision 3c13457975b4d3b011cc88f4a09b40110a42fde1)
+@@ -4,10 +4,10 @@
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+ 
+ @SpringBootApplication
+-public class Spring2Application {
++public class Application {
+ 
+     public static void main(String[] args) {
+-        SpringApplication.run(Spring2Application.class, args);
++        SpringApplication.run(Application.class, args);
+     }
+     // 푸쉬 연습
+ }
+Index: src/test/java/com/example/spring2/HelloControllerTest.java
+===================================================================
+diff --git a/src/test/java/com/example/spring2/HelloControllerTest.java b/src/test/java/com/example/spring2/HelloControllerTest.java
+new file mode 100644
+--- /dev/null	(revision 3c13457975b4d3b011cc88f4a09b40110a42fde1)
++++ b/src/test/java/com/example/spring2/HelloControllerTest.java	(revision 3c13457975b4d3b011cc88f4a09b40110a42fde1)
+@@ -0,0 +1,26 @@
++package com.example.spring2;
++
++import org.junit.jupiter.api.Test;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
++import org.springframework.test.web.servlet.MockMvc;
++
++import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
++import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
++import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
++@WebMvcTest
++class HelloControllerTest {
++
++    @Autowired
++    private MockMvc mvc;
++
++    @Test
++    public void hello() throws Exception {
++        String hello = "hello";
++
++        mvc.perform(get("/hello"))
++                .andExpect(status().isOk())
++                .andExpect(content().string(hello));
++    }
++
++}
+Index: src/test/java/com/example/spring2/Spring2ApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/example/spring2/Spring2ApplicationTests.java b/src/test/java/com/example/spring2/Spring2ApplicationTests.java
+deleted file mode 100644
+--- a/src/test/java/com/example/spring2/Spring2ApplicationTests.java	(revision 6e2bbf255197fb56c32eb936e8a7f3bcddfe2131)
++++ /dev/null	(revision 6e2bbf255197fb56c32eb936e8a7f3bcddfe2131)
+@@ -1,13 +0,0 @@
+-package com.example.spring2;
+-
+-import org.junit.jupiter.api.Test;
+-import org.springframework.boot.test.context.SpringBootTest;
+-
+-@SpringBootTest
+-class Spring2ApplicationTests {
+-
+-    @Test
+-    void contextLoads() {
+-    }
+-
+-}
