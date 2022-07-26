@@ -14,7 +14,7 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.test.web.client.ExpectedCount;
+
 
 import java.util.List;
 
@@ -47,7 +47,7 @@ public class PostsApiControllerTest {
         String url = "http://localhost:"+port+"/api/v1/posts";
 
         //when
-        ResponseEntity<Long> responseEntity= restTemplate.postForEntity(url,requestDto,long.class);
+        ResponseEntity<Long> responseEntity= restTemplate.postForEntity(url, requestDto,Long.class);
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);

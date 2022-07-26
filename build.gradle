@@ -17,12 +17,16 @@ repositories {
         annotationProcessor 'org.projectlombok:lombok'
         implementation 'org.springframework.boot:spring-boot-starter-test'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
-        implementataion'com.h2database:h2'
+        runtimeOnly 'com.h2database:h2'
         implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 
-        runtimeOnly 'com.h2database:h2'
 
     }
+}
+
+dependencies {
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
 }
 
 

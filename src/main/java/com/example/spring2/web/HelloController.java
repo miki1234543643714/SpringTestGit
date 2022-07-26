@@ -1,6 +1,7 @@
 package com.example.spring2.web;
 
 import com.example.spring2.web.dto.HelloResponsDto;
+import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
